@@ -1,6 +1,8 @@
 package sorcery.util;
 
+import java.awt.Color;
+
 public interface PixelController {
     
-    public Pixel getNext();
+    public Color[][] get();
 }
