@@ -33,7 +33,16 @@ public class Mandelbrot implements PixelController {
                     if (z.i*z.i + z.r*z.r > 4)
                         break;
                 }
-                arr[i][j] = new Color(Math.min(k/50f,1),0,0);
+                if (k<8)
+                    arr[i][j] = new Color(0,k/8f,0);
+                else if (k<16)
+                    arr[i][j] = new Color(0,0,(k-8)/8f);
+                else if (k<64)
+                    arr[i][j] = new Color(0,(k-16)/48f,(k-16)/48f);
+                else if (k<400)
+                    arr[i][j] = new Color(255,255,0);
+                else
+                    arr[i][j] = new Color(255,255,255);
             }
         }
         
