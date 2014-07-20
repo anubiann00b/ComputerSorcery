@@ -11,15 +11,14 @@ public class Mandelbrot implements PixelController {
         PixelScreen p = new PixelScreen(640,480,new Mandelbrot());
     }
     
-    int x;
+    double rcorner = -2.25;
+    double icorner = -1.5;
+    double side = 3;
     
     @Override
     public Color[][] get() {
         Color[][] arr = new Color[640][480];
         
-        double rcorner = -2.25;
-        double icorner = -1.5;
-        double side = 3;
         double rgap = side/640;
         double igap = side/480;
         
@@ -47,5 +46,13 @@ public class Mandelbrot implements PixelController {
         }
         
         return arr;
+    }
+
+    @Override
+    public void mouseClick(int x, int y) {
+        rcorner += (640-x)/320*side/4;
+        icorner += (480-y)/240*side/4;
+        
+        side = side/2;
     }
 }
